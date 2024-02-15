@@ -1,0 +1,112 @@
+*{
+  margin:0;
+  padding:0;
+ 
+}
+
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  background: black;
+}
+
+.container{
+  border-radius: 5%;
+  position: relative;
+  top: -250px;
+  transform: skewY(-20deg);
+  animation:animate 5s linear infinite;
+}
+@keyframes animate{
+  0%{
+    filter:hue-rotate(0deg)
+  }
+  100%{
+    filter:hue-rotate(360deg)
+  }
+}
+ .cube{
+   border-radius: 5%;
+  z-index:2;
+  position:relative;
+
+}
+
+
+.container .cube:nth-child(2){
+  border-radius: 5%;
+  z-index:1;
+  translate: -60px -60px;
+}
+.container .cube:nth-child(3){
+  border-radius: 5%;
+  z-index:3;
+  translate: 60px 60px;
+}
+
+
+.container .cube div{
+  border-radius: 5%;
+  position: absolute;
+  display:flex;
+  flex-direction:column;
+  gap: 30px;
+  translate: calc(-70px * var(--x))calc(-60px * var(--y));
+}
+
+.container .cube div span{
+  border-radius: 5%;
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: #ebebeb;
+  z-index: calc(1 * var(--i));
+  transition: 1.5s;
+}
+.container .cube div span:hover{
+  border-radius: 5%;
+  transition:0s;
+  background:  #ff0000;
+  filter: drop-shadow:(0 0 30px #c30000);
+  
+}
+.container .cube div span::before{
+  border-radius: 5%;
+  content:'';
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  left: -40px;
+  background:#fff;
+  transform-origin:right;
+  transform:skewY(45deg);
+  transition:1.5s;
+}
+.container .cube div span:hover::before{
+  border-radius: 5%;
+  transition: 0s;
+  background:#ff4242;
+}
+
+
+.container .cube div span::after{
+  border-radius: 5%;
+  content:'';
+  position: absolute;
+  top:-40px;
+  width: 100%;
+  height: 40px;
+  left: 0;
+  background:#f2f2f2;
+  transform-origin:bottom;
+  transform:skewX(45deg);
+  transition:1.5s;
+}
+.container .cube div span:hover::after{
+  border-radius: 5%;
+  transition: 0s;
+  background:#ee959a;
+}
